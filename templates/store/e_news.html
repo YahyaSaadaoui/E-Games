@@ -1,0 +1,31 @@
+{% extends './base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Epic Games News</h1>
+    <div class="news-article">
+        <h4>Epic MEGA Sale Week Three Highlights!</h4>
+        <p>Midnight Ghost Hunt, Fall Guys Costume giveaway, Star Trek Resurgence and more!</p>
+        <img src="{% static 'megaselles1.png' %}" alt="Article Image">
+        <p>Published on: <span class="publish-date">2 days ago</span></p>
+    </div>
+    <div class="news-article">
+        <h4>The Epic MEGA Sale 2023</h4>
+        <p>The Epic MEGA Sale is here with some of our biggest discounts yet. And with the return of the Epic Coupon and the introduction of Epic Rewards, there are more opportunities to save than ever before.</p>
+        <img src="{% static 'megaseller2.png' %}" alt="Article Image">
+        <p>Published on: <span class="publish-date">16 days ago</span></p>
+    </div>
+    <div class="news-article">
+        <h4>Warhammer Skulls showcase reveals new games, huge updates, and a launches a sale on the Epic Games Store</h4>
+        <p>The Skulls event is a week-long festival of Warhammer video game announcements, content updates and game discounts on the Epic Store!</p>
+        <img src="{% static 'QKULLS.png' %}" alt="Article Image">
+        <p>Published on: <span class="publish-date">22 days ago</span></p>
+    </div>
+    <br/><br/><br/><br/>
+    <h1>Microsoft</h1>
+    <div class="news-article">        
+        <h4>Microsoft Grabs Some of World’s Biggest Games in $7.5 Billion Deal</h4>
+        <p>The company’s acquisition of ZeniMax Media puts it in a strong position against Sony just weeks before the release of their next generation of gaming consoles.</p>
+        <img src="{% static 'doom.jpg' %}" alt="Article Image">
+        <p>Published on: <span class="publish-date">September 21, 2020</span></p>
+    </div>
+{% endblock %}

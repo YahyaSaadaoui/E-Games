@@ -1,0 +1,30 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}{{ game.name }}{% endblock %}
+{% block content %}
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="{{ game.images.first.image.url }}" alt="Game Image">
+            </div>
+            <div class="col-lg-6">
+                <h1>{{ game.name }}</h1>
+                <p>Price: ${{ game.price }}</p>
+                <p>Consoles: {{ game.console_type }}</p>
+                <p>Description: {{ game.details }}</p>
+                <form action="{% url 'store:checkout' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="game_id" value="{{ game.id }}">
+                    <input type="hidden" name="game_name" value="{{ game.name }}">
+                    <input type="hidden" name="game_price" value="{{ game.price }}">
+                    <input type="hidden" name="game_image" value="{{ game.images.first.image.url }}">
+                    <button type="submit" class="btn btn-primary">Buy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

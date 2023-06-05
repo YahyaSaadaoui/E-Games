@@ -1,0 +1,122 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<main>
+    <style>
+    .card {
+        background-color: #1b2838;
+        border-color: #1b2838;
+    }
+
+    .card-title {
+        color: #c2d1d9;
+    }
+
+    .form-label {
+        color: #c2d1d9;
+    }
+
+    .form-control {
+        background-color: #304a66;
+        color: #c2d1d9;
+        border-color: #304a66;
+    }
+
+    .form-control::placeholder {
+        color: #c2d1d9;
+    }
+
+    .btn-primary {
+        background-color: #3a6186;
+        border-color: #3a6186;
+    }
+            .game-card {
+        height: 100%;
+    }
+
+    .game-card .card-img-top {
+        object-fit: cover;
+        height: 300px; 
+    }
+
+    .card-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-height: 3.6em; 
+    }
+
+    .text-truncate {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .button-container {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button-container button {
+        flex-grow: 1;
+        margin-right: 5px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .btn-smaller {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    </style>    
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="h1 fw-bold">Search & Buy</h1>
+                <p class="fw-bold">Welcome to the ultimate e-game experience!</p>
+                <p class="lead text-muted">Whether you are a fan of action, adventure, strategy, or puzzle games, you will find something to love in our diverse and exciting collection of e-games. Explore stunning worlds, challenge your skills, and compete with other players online.Don’t miss this chance to join the e-game revolution. Sign up now and get ready to play!
+                </p>
+            </div>
+        </div>
+    </section>
+       <div class="album py-5 bg-dark">
+        <div class="container">
+            <div class="pb-3 h5">All Games</div>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+                    {% for game in games %}
+                    <div class="col">
+                        <div class="card shadow-sm game-card">
+                            <a href="{% url 'store:game_detail' game.id %}">
+                                <img class="card-img-top" alt="Game Image" src="{{ game.images.first.image.url }}">
+                            </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ game.name }}</h5>
+                                    <p class="card-text price-console">
+                                        Price: ${{ game.price }} <br/>
+                                        Consoles: {{ game.console_type }}
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="button-container">
+                                            <form action="{% url 'store:checkout' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="game_id" value="{{ game.id }}">
+                                                <input type="hidden" name="game_name" value="{{ game.name }}">
+                                                <input type="hidden" name="game_price" value="{{ game.price }}">
+                                                <input type="hidden" name="game_image" value="{{ game.images.first.image.url }}">
+                                                <button type="submit" class="btn btn-primary btn-sm btn-smaller">Buy</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

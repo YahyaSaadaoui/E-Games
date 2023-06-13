@@ -1,10 +1,94 @@
 {% extends './base.html' %}
+{% load static %}
 
 {% block content %}
-  <h2>Sign In</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign In</button>
-  </form>
+<style>
+  .login-wrapper {
+    background-image: url("{% static 'playhand2.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-form {
+    max-width: 400px;
+    padding: 20px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -400px;
+    background-color: transparent;
+    margin-left: 500px;
+  }
+
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  .login-form form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    transition: border-color 0.3s ease-in-out;
+    height: 25px;
+  }
+
+  .login-form input[type="text"]:focus,
+  .login-form input[type="password"]:focus {
+    border-color: var(--primary-color);
+  }
+
+  .submit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 10px;
+  }
+
+  .submit-icon i {
+    color: white;
+  }
+
+  .submit-icon:hover i {
+    color: #fe6579;
+
+  }
+</style>
+<script src="https://kit.fontawesome.com/9d461a39e2.js" crossorigin="anonymous"></script>
+
+<div class="login-wrapper">
+  <div class="login-form">
+    <h2>Sign In</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <label for="submit" class="submit-icon">
+        <i class="fa-sharp fa-solid fa-play fa-rotate-270 fa-2xl"></i>
+        <input type="submit" id="submit" style="display: none;">
+      </label>
+    </form>
+  </div>
+</div>
 {% endblock %}

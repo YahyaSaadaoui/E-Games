@@ -2,9 +2,16 @@
 {% load static %}
 {% block title %}Payment Success{% endblock %}
 {% block content %}
-    <div class="container mt-5">
-        <h2>Payment Successful</h2>
-        <p>Your payment has been successfully processed.</p>
-        <a href="{% url 'store:home' %}" class="btn btn-primary">Back to Home</a>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-2">
+            <img src="{% static 'tenzsucceed.png' %}" alt="Payment Success" width="100%">
+        </div>
+        <div class="col-lg-10">
+            <h2>Payment Successful</h2>
+            <p>Your payment has been successfully processed.</p>
+            <a href="{% url 'store:home' %}" class="btn btn-primary">Back to Home</a>
+        </div>
     </div>
+</div>
 {% endblock %}

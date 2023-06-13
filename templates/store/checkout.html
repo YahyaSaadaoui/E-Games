@@ -8,15 +8,15 @@
             <div class="col-md-6">
                 <div class="card mb-4">
                     <img src="{{ game_image }}" class="card-img-top" alt="{{ game_name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ game_name }}</h5>
-                        <p class="card-text">Price: ${{ game_price }}</p>
-                        <a href="{% url 'store:payment' %}" class="btn btn-primary">Proceed to Payment</a>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-md-6">
                 <h4>Shipping Address</h4>
+                <div class="card-body">
+                    <h5 class="card-title">{{ game_name }}</h5>
+                    <p class="card-text">Price: ${{ game_price }}</p>
+                </div>
                 <form method="POST" action="{% url 'store:payment' %}">
                     {% csrf_token %}
                     <div class="mb-3">
@@ -35,9 +35,11 @@
                         <label for="zip" class="form-label">Visa Card Id</label>
                         <input type="text" class="form-control" id="zip" name="zip" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+                    <button type="submit" class="btn btn-primary">Proceed to Payment  <i class="fa-solid fa-money-bill-wave fa-bounce fa-2xl" style="color: #22511f;"></i></button>
                 </form>
             </div>
         </div>
+<script src="https://kit.fontawesome.com/9d461a39e2.js" crossorigin="anonymous"></script>
+
     </div>
 {% endblock %}

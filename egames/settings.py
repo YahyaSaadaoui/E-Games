@@ -12,9 +12,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wy_8k2%@l0$7lpw&_zzph9!x--v%1ef7sy6r+b+*j10(j7o_-5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+DEBUG = False
+ALLOWED_HOSTS = ['https://egameswebapp.netlify.app']
 
 # Application definition
 
